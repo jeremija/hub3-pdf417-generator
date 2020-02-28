@@ -1,5 +1,6 @@
 <!doctype html>
 <html><head><title>bwip-js - JavaScript Barcode Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta charset="utf-8" />
 <!-- <link rel="stylesheet" type="text/css" href="lib/demo.css"> -->
 <style>
@@ -9,12 +10,13 @@
 
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: 0 1rem;
+  padding: 0;
   margin: 0;
 }
 h1 {
-  padding: 1rem 1rem;
+  padding: 1rem 1rem 0;
   margin: 0;
+  font-size: 1rem;
 }
 
 label {
@@ -48,15 +50,29 @@ section {
   flex-wrap: wrap;
 }
 
+@media(max-width: 800px) {
+  section {
+    display: block;
+  }
+}
+
 section > * {
-  flex: 0 0 400px;
-  padding: 1rem
+  min-width: 0;
+}
+
+section > form {
+  padding: 1rem;
+  flex: 0 1 400px;
+}
+
+section > .result {
+  padding: 1rem;
+  flex: 1 1 400px;
 }
 
 pre {
   overflow-x: auto;
   overflow-y: hidden;
-  max-width: 400px;
 }
 
 a[href=""] {
@@ -120,7 +136,7 @@ a[href=""] {
 
   <input type="file" hidden id="template-file" accept=".json" />
 
-  <div>
+  <div class="result">
     <pre id="rawcontent"></pre>
     <!-- <pre id="content"></pre> -->
     <div id="target" style="position:relative;border:1px solid #fff"></div>
