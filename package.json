@@ -1,0 +1,9 @@
+{
+  "name": "hub3-example",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "init": "git submodule update --init",
+    "build": "node build.js"
+  }
+}

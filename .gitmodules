@@ -1,0 +1,3 @@
+[submodule "bwip-js"]
+	path = bwip-js
+	url = https://github.com/metafloor/bwip-js

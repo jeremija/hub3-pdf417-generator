@@ -1,0 +1,133 @@
+<!doctype html>
+<html><head><title>bwip-js - JavaScript Barcode Generator</title>
+<meta charset="utf-8" />
+<!-- <link rel="stylesheet" type="text/css" href="lib/demo.css"> -->
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 1rem;
+  margin: 0;
+}
+h1 {
+  padding: 1rem 1rem;
+  margin: 0;
+}
+
+label {
+  font-size: 0.8rem;
+  display: block;
+}
+
+input[type="text"],
+label{
+  width: 100%;
+}
+
+input {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+button, .button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid #999;
+  background-color: #ddd;
+  text-decoration: none;
+  color: black;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+section > * {
+  flex: 0 0 400px;
+  padding: 1rem
+}
+
+pre {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 400px;
+}
+
+a[href=""] {
+  display: none;
+}
+</style>
+<script type="text/javascript" src="../bwip-js/dist/bwip-js-min.js"></script>
+<script type="text/javascript" src="../bwip-js/examples/drawing-svg.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+<h1>
+  Generator PDF417 barkoda za racune prema <a href="https://www.hub.hr/sites/default/files/inline-files/2dbc_0.pdf">HUB3</a> standardu
+</h1>
+<section>
+  <form id="params" autocomplete="off">
+    <input type="hidden" name="header" value="HRVHUB30" maxlength="8">
+
+    <label>Valuta</label>
+    <input type="text" name="currency" value="HRK" maxlength="3">
+
+    <label>Iznos</label>
+    <input type="text" name="amount" value="0" maxlength="15">
+
+    <label>Ime i prezime platitelja</label>
+    <input type="text" name="payerName" maxlength="30">
+
+    <label>Adresa platitelja (ulica i broj)</label>
+    <input type="text" name="payerAddress" maxlength="27">
+
+    <label>Adresa platitelja (postanski broj i mjesto)</label>
+    <input type="text" name="payerCity" maxlength="27">
+
+    <label>Naziv primatelja</label>
+    <input type="text" name="payeeName" maxlength="25">
+
+    <label>Adresa primatelja (ulica i broj)</label>
+    <input type="text" name="payeeAddress" maxlength="25">
+
+    <label>Adresa primatelja (postanski broj i mjesto)</label>
+    <input type="text" name="payeeCity" maxlength="27">
+
+    <label>IBAN ili racun primatelja</label>
+    <input type="text" name="iban" maxlength="21">
+
+    <label>Model racuna primatelja</label>
+    <input type="text" name="model" maxlength="4">
+
+    <label>Poziv na broj primatelja</label>
+    <input type="text" name="ref" maxlength="22">
+
+    <label>Sifra namjene</label>
+    <input type="text" name="purpose" maxlength="4">
+
+    <label>Opis placanja</label>
+    <input type="text" name="desc" maxlength="35">
+
+    <a class="button" href="#" id="template-load">Ucitaj Template</a>
+    <button type="submit">Napravi barkod</button>
+  </form>
+
+  <input type="file" hidden id="template-file" accept=".json" />
+
+  <div>
+    <pre id="rawcontent"></pre>
+    <!-- <pre id="content"></pre> -->
+    <div id="target" style="position:relative;border:1px solid #fff"></div>
+    <pre id="output"></pre>
+    <a class="button" href="" id="download" download="racun.svg">Download SVG</a>
+    <a class="button" href="" id="template-save" download="template.json">Spremi Template</a>
+  </div>
+</section>
+</body>
+</html>
